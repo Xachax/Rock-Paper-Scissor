@@ -5,6 +5,55 @@
     <title></title>
   </head>
   <body>
+    <script>
+      function computerPlay(){
+        const num = Math.floor(Math.random() * 3);
+        switch (num) {
+          case 0:
+            return "ROCK";
+            break;
+          case 1:
+            return "PAPER";
+            break;
+          case 2:
+            return "SCISSOR";
+            break;
+        }
+      }
+      function playRound(player, computer){
+          if ((player == "ROCK" && computer == "PAPER") || (player == "PAPER" && computer == "SCISSOR") || (player == "SCISSOR" && computer == "ROCK"))
+            return "You suck";
+          if ((player == "PAPER" && computer == "ROCK") || (player == "SCISSOR" && computer == "PAPER") || (player == "ROCK" && computer == "SCISSOR"))
+            return "Damn you";
+      }
 
+      function game(){
+        i = 0;
+        computerScore = 0;
+        playerScore = 0;
+        while(i < 5){
+          player = prompt("What will it be punk?");
+          player = player.toUpperCase();
+          computer = computerPlay();
+
+          if (playRound(player,computer) == "You suck"){
+            computerScore++;
+            console.log("You suck");
+          }
+          else {
+            playerScore++;
+            console.log("Damn you");
+          }
+          i++;
+        }
+        if (playerScore > computerScore)
+          console.log("You win!");
+        else
+          console.log("Wow... you really got beat by an inanimate object");
+      }
+
+      game();
+
+    </script>
   </body>
 </html>
